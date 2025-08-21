@@ -1,4 +1,12 @@
+import os
 from app import app, db, User
+
+# Ensure the instance folder exists
+# This is where the SQLite database will be stored.
+try:
+    os.makedirs(app.instance_path)
+except OSError:
+    pass
 
 with app.app_context():
     # Create all database tables

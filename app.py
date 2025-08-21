@@ -1,10 +1,12 @@
+import os
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 
-app = Flask(__name__)
-app.config['SECRET_KEY'] = 'your_secret_key'  # Change this to a random secret key
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
+app = Flask(__name__, instance_relative_config=True)
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'a-secret-key-you-should-change')
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db' # With instance_relative_config, this goes to instance/blog.db
+
 db = SQLAlchemy(app)
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
