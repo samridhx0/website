@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="post-list">
+        {% for post in posts %}
+            <article class="post-summary">
+                <h2><a href="{{ url_for('post', post_id=post.id) }}">{{ post.title }}</a></h2>
+                <p class="post-meta">Published on {{ post.date_posted.strftime('%B %d, %Y') }}</p>
+                <div class="post-excerpt">
+                    <p>{{ post.content.split('\n')[0] }}...</p> {# Shows the first paragraph as an excerpt #}
+                </div>
+                <a href="{{ url_for('post', post_id=post.id) }}" class="read-more">Read More &rarr;</a>
+            </article>
+        {% else %}
+            <div class="no-posts">
+                <h2>No posts yet.</h2>
+                <p>Check back later for updates from the founder.</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
