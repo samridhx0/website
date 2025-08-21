@@ -11,6 +11,34 @@ db = SQLAlchemy(app)
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
 
+
+# --- Database Initialization ---
+def init_database():
+    """Create database tables and a default user if they don't exist."""
+    from sqlalchemy import inspect
+
+    with app.app_context():
+        inspector = inspect(db.engine)
+        if not inspector.has_table("user"):
+            print("First run detected: Initializing the database...")
+            # Ensure the instance folder exists
+            try:
+                os.makedirs(app.instance_path)
+            except OSError:
+                pass
+            db.create_all()
+            # Create a default admin user
+            admin_user = User(username='admin', password='password')
+            db.session.add(admin_user)
+            db.session.commit()
+            print("Database initialized.")
+        else:
+            print("Database already initialized.")
+
+# Run the initialization check when the app starts
+init_database()
+
+
 # --- Models ---
 
 class Post(db.Model):
