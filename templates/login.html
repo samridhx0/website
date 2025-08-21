@@ -1,8 +1,13 @@
-{% extends "base.html" %}
+{% extends "login_layout.html" %}
+
+{% block title %}Sign In - The Founder's Notes{% endblock %}
 
 {% block content %}
-    <div class="form-container">
-        <h2>Founder's Login</h2>
+<div class="login-container">
+    <div class="login-form-box">
+        <h1 class="login-logo"><a href="{{ url_for('index') }}">The Founder's Notes</a></h1>
+        <h2>Welcome Back</h2>
+        <p class="login-subheading">Sign in to manage your content.</p>
         <form method="POST" action="{{ url_for('login') }}">
             <div class="form-group">
                 <label for="username">Username</label>
@@ -12,7 +17,8 @@
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" required>
             </div>
-            <button type="submit" class="btn">Login</button>
+            <button type="submit" class="btn btn-full-width">Sign In</button>
         </form>
     </div>
+</div>
 {% endblock %}

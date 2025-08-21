@@ -308,3 +308,66 @@ h1, h2, h3, h4, h5, h6 {
 .no-posts h2 {
     margin-top: 0;
 }
+
+/* --- Login Page Specific Styles --- */
+.login-page-body {
+    background-color: #f0f2f5; /* A slightly different, neutral background */
+}
+
+.login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.login-form-box {
+    width: 100%;
+    max-width: 400px;
+    padding: 40px;
+    background: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: 0 4px 25px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.login-logo {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+.login-logo a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.login-form-box h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.8em;
+}
+
+.login-subheading {
+    color: #777;
+    margin-bottom: 30px;
+}
+
+.login-form-box .form-group {
+    text-align: left;
+}
+
+.btn-full-width {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1em;
+}
+
+.login-flash-messages {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 400px;
+    z-index: 100;
+}
