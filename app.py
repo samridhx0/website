@@ -12,6 +12,27 @@ login_manager = LoginManager(app)
 login_manager.login_view = 'login'
 
 
+# --- Models ---
+
+class Post(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100), nullable=False)
+    content = db.Column(db.Text, nullable=False)
+    date_posted = db.Column(db.DateTime, nullable=False, default=db.func.current_timestamp())
+
+    def __repr__(self):
+        return f"Post('{self.title}', '{self.date_posted}')"
+
+class User(UserMixin, db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(15), unique=True, nullable=False)
+    password = db.Column(db.String(80), nullable=False)
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
+
 # --- Database Initialization ---
 def init_database():
     """Create database tables and a default user if they don't exist."""
@@ -38,26 +59,6 @@ def init_database():
 # Run the initialization check when the app starts
 init_database()
 
-
-# --- Models ---
-
-class Post(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(100), nullable=False)
-    content = db.Column(db.Text, nullable=False)
-    date_posted = db.Column(db.DateTime, nullable=False, default=db.func.current_timestamp())
-
-    def __repr__(self):
-        return f"Post('{self.title}', '{self.date_posted}')"
-
-class User(UserMixin, db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(15), unique=True, nullable=False)
-    password = db.Column(db.String(80), nullable=False)
-
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(int(user_id))
 
 # --- Routes ---
 
