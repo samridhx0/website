@@ -184,6 +184,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .form-group input[type="text"],
+.form-group input[type="password"],
 .form-group textarea {
     width: 100%;
     padding: 12px;
@@ -195,6 +196,7 @@ h1, h2, h3, h4, h5, h6 {
     transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 .form-group input[type="text"]:focus,
+.form-group input[type="password"]:focus,
 .form-group textarea:focus {
     outline: none;
     border-color: var(--accent-color);
@@ -311,7 +313,8 @@ h1, h2, h3, h4, h5, h6 {
 
 /* --- Login Page Specific Styles --- */
 .login-page-body {
-    background-color: #f0f2f5; /* A slightly different, neutral background */
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
 }
 
 .login-container {
@@ -325,41 +328,139 @@ h1, h2, h3, h4, h5, h6 {
 .login-form-box {
     width: 100%;
     max-width: 400px;
-    padding: 40px;
+    padding: 50px 40px;
     background: var(--card-bg);
-    border-radius: 8px;
-    box-shadow: 0 4px 25px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
     text-align: center;
+    position: relative;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.login-form-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 50px rgba(0,0,0,0.15);
 }
 
 .login-logo {
-    font-size: 1.5em;
-    margin-bottom: 10px;
+    font-size: 1.6em;
+    margin-bottom: 15px;
+    font-weight: 600;
 }
 .login-logo a {
     color: var(--text-color);
     text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+.login-logo a:hover {
+    color: var(--accent-color);
 }
 
 .login-form-box h2 {
     margin-top: 0;
-    margin-bottom: 10px;
-    font-size: 1.8em;
+    margin-bottom: 15px;
+    font-size: 1.9em;
+    color: var(--accent-color);
+    font-weight: 700;
 }
 
 .login-subheading {
-    color: #777;
-    margin-bottom: 30px;
+    color: #666;
+    margin-bottom: 35px;
+    font-size: 1em;
+    line-height: 1.5;
 }
 
 .login-form-box .form-group {
     text-align: left;
+    margin-bottom: 25px;
+}
+
+.login-form-box .form-group:last-of-type {
+    margin-bottom: 30px;
+}
+
+.login-form-box label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--text-color);
+    font-size: 0.95em;
+}
+
+.login-form-box input[type="text"],
+.login-form-box input[type="password"] {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1em;
+    transition: all 0.3s ease-in-out;
+    background-color: #fafafa;
+}
+
+.login-form-box input[type="text"]:focus,
+.login-form-box input[type="password"]:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(67, 65, 144, 0.1);
+    transform: translateY(-1px);
+}
+
+.login-form-box input[type="text"]:hover,
+.login-form-box input[type="password"]:hover {
+    border-color: #ccc;
+    background-color: #fff;
 }
 
 .btn-full-width {
     width: 100%;
-    padding: 15px;
+    padding: 16px;
     font-size: 1.1em;
+    font-weight: 600;
+    background: linear-gradient(135deg, var(--accent-color) 0%, #5a58a0 100%);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 10px;
+}
+
+.btn-full-width:hover {
+    background: linear-gradient(135deg, #5a58a0 0%, var(--accent-color) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(67, 65, 144, 0.3);
+}
+
+.btn-full-width:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 15px rgba(67, 65, 144, 0.2);
+}
+
+/* Mobile responsiveness for login page */
+@media (max-width: 480px) {
+    .login-form-box {
+        margin: 20px;
+        padding: 40px 30px;
+        max-width: 100%;
+    }
+    
+    .login-logo {
+        font-size: 1.4em;
+    }
+    
+    .login-form-box h2 {
+        font-size: 1.7em;
+    }
+    
+    .btn-full-width {
+        padding: 14px;
+        font-size: 1em;
+    }
 }
 
 .login-flash-messages {
