@@ -4,8 +4,8 @@
     --accent-color: #434190;
     --border-color: #e2e8f0;
     --card-bg: #ffffff;
-    --header-font: 'Merriweather', serif;
-    --body-font: 'Inter', sans-serif;
+    --header-font: 'Georgia', serif;
+    --body-font: 'Segoe UI', sans-serif;
 }
 
 /* --- Global Styles --- */
@@ -38,7 +38,7 @@ a:hover {
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--header-font);
     font-weight: 700;
-    color: var(--text-color);
+    color: blue;
     line-height: 1.3;
 }
 
